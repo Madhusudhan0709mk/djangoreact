@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
+   
 ]
 
 MIDDLEWARE = [
@@ -93,12 +94,27 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # React app URL
+]
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'react',         #  database name
+        'USER': 'postgres',         # database user
+        'PASSWORD': 'mad123', # database password
+        'HOST': 'localhost',         #  database host, e.g., 'localhost'
+        'PORT': '5432',         # database port, e.g., '5432'
     }
 }
+
 
 
 # Password validation
@@ -178,6 +194,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+AUTH_USER_MODEL = 'api.User'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

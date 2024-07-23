@@ -18,4 +18,10 @@ django-ckeditor
 django-ckeditor-5
 django-taggit
 shortuuid
+# mysql
+# mysqlclient
+# mysql-connector
+psycopg2-binary
+
+
 

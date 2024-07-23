@@ -9,8 +9,8 @@ import Registerpage from './views/Registerpage'
 import Loginpage from './views/Loginpage'
 import Dashboard from './views/Dashboard'
 import Navbar from './views/Navbar'
-
-
+import PostForm from './components/PostForm'
+import PostList from './components/PostList'
 
 function App() {
   return (
@@ -22,6 +22,10 @@ function App() {
           <Route component={Loginpage} path="/login" />
           <Route component={Registerpage} path="/register" exact />
           <Route component={Homepage} path="/" exact />
+          <PrivateRoute path="/post" exact>
+                        <PostList />
+                        <PostForm />
+          </PrivateRoute>
         </Switch>
       </AuthProvider>
     </Router>

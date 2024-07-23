@@ -12,4 +12,6 @@ urlpatterns = [
     path('test/', views.testEndPoint, name='test'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('', views.getRoutes),
+      path('posts/', views.PostListCreateView.as_view(), name='post_list_create'),
+    path('posts/<int:pk>/',views.PostRetrieveUpdateDestroyView.as_view(), name='post_detail')
 ]

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from api.models import User
-from api.models import Profile
-from api.serializer import MyTokenObtainPairSerializer, RegisterSerializer,ProfileSerializer
+from api.models import Profile,Post
+from api.serializer import MyTokenObtainPairSerializer, RegisterSerializer,ProfileSerializer,PostSerializer
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -11,7 +11,10 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework import permissions
 
+
+from django.shortcuts import get_object_or_404
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -52,3 +55,19 @@ class ProfileView(generics.GenericAPIView):
     serializer_class = ProfileSerializer
     query_set = Profile.objects.all()
     
+class PostListCreateView(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        obj = get_object_or_404(Post, pk=self.kwargs['pk'])
+        return obj

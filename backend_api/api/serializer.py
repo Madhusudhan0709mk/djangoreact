@@ -1,4 +1,4 @@
-from api.models import User,Profile
+from api.models import User,Profile,Post
 from django.contrib.auth.password_validation import validate_password
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
@@ -58,3 +58,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields=('__all__')
+        
+        
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['id', 'title', 'content', 'user']
+        read_only_fields = ['user']

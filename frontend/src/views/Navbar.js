@@ -15,35 +15,35 @@ function Navbar() {
 
   return (
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <div className="container-fluid">
         
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               {token === null && 
               <>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/login">Login</Link>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">Login</Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/register">Register</Link>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/register">Register</Link>
                 </li>
               </>
               }
 
             {token !== null && 
               <>
-                <li class="nav-item">
-                  <a class="nav-link" href="/dashboard">Dashboard</a>
+                <li className="nav-item">
+                  <a className="nav-link" href="/dashboard">Dashboard</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" onClick={logoutUser} style={{cursor:"pointer"}}>Logout</a>
+                <li className="nav-item">
+                  <a className="nav-link" onClick={logoutUser} style={{cursor:"pointer"}}>Logout</a>
                 </li>
               </>
               }   
