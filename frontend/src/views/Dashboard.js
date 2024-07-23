@@ -1,9 +1,9 @@
-import {useState, useEffect} from 'react'
-import useAxios from "../utils/useAxios"
-import jwtDecode from 'jwt-decode'
+import {useState, useEffect} from 'react';
+import useAxios from "../utils/useAxios";
+import jwtDecode from 'jwt-decode';
 function Dashboard() {
 
-    const [res, setRes] = useState("")
+    const [res, setRes] = useState("");
     const api = useAxios();
     const token = localStorage.getItem("authTokens")
 

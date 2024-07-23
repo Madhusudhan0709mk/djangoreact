@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from api.models import User
-
-from api.serializer import MyTokenObtainPairSerializer, RegisterSerializer
+from api.models import Profile
+from api.serializer import MyTokenObtainPairSerializer, RegisterSerializer,ProfileSerializer
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -29,7 +29,8 @@ def getRoutes(request):
     routes = [
         '/api/token/',
         '/api/register/',
-        '/api/token/refresh/'
+        '/api/token/refresh/',
+        '/api/profile'
     ]
     return Response(routes)
 
@@ -45,3 +46,9 @@ def testEndPoint(request):
         data = f'Congratulation your API just responded to POST request with text: {text}'
         return Response({'response': data}, status=status.HTTP_200_OK)
     return Response({}, status.HTTP_400_BAD_REQUEST)
+
+
+class ProfileView(generics.GenericAPIView):
+    serializer_class = ProfileSerializer
+    query_set = Profile.objects.all()
+    
